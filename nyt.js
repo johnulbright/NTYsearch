@@ -103,6 +103,7 @@ function displayResults(json) {
       let current = articles[index];
 
       link.href = current.web_url;
+      link.target="blank";
       link.textContent = current.headline.main;
 
       para.textContent = "Keywords: ";
