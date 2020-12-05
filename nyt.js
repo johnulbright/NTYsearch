@@ -60,7 +60,7 @@ function displayResults(json) {
     section.removeChild(section.firstChild); //1
   }
   let articles = json.response.docs;
-  if(hits-10*(pageNumber+1)<10){
+  if(hits-10*(pageNumber+1)<=10){
     nextBtn.innerText=`Last ${hits-10*(pageNumber+1)}`;
   } else {
     nextBtn.innerText="Next 10";
