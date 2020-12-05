@@ -38,15 +38,7 @@ function newSearch(e) {
 //1
 function fetchResults(e) {
   // Assemble the full URL
-  url =
-    baseURL +
-    "?api-key=" +
-    key +
-    "&page=" +
-    pageNumber +
-    "&q=" +
-    searchTerm.value;
-
+  url =baseURL+"?api-key="+key+"&page="+pageNumber+"&q="+searchTerm.value;
   if (startDate.value !== "") {
     url += "&begin_date=" + startDate.value;
   }
@@ -68,7 +60,11 @@ function displayResults(json) {
     section.removeChild(section.firstChild); //1
   }
   let articles = json.response.docs;
-
+  if(hits-10*(pageNumber+1)<10){
+    nextBtn.innerText=`Last ${hits-10*(pageNumber+1)}`;
+  } else {
+    nextBtn.innerText="Next 10";
+  }
   if (hits === 0) {
     resultsInfo.innerText = "No results found.";
   } else if (hits < 10 * pageNumber + 10) {
